@@ -3,9 +3,6 @@ import { NavLink } from "react-router-dom";
 const Navigation = () => {
     return (
         <div>
-            {/* <NavLink to="/">HOME</NavLink>
-            <NavLink to="/about">ABOUT</NavLink>
-            <NavLink to="/next">NEXT</NavLink> */}
             <div className="navbar bg-base-100 font_work px-32 py-12">
                 <div className="navbar-start">
                     <div className="dropdown">

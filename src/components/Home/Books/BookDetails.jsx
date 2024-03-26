@@ -18,17 +18,73 @@ const BookDetails = () => {
         return <div>Book is Loading....</div>;
     }
 
-    const { bookName, author, image, rating, category, tags, publisher, yearOfPublishing } = book;
+    const { bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing } = book;
 
     return (
         <div>
-            <h2>Book Details</h2>
-            <img src={image} alt={bookName} />
-            <p>Book Name: {bookName}</p>
-            <p>Author: {author}</p>
-            <p>Rating: {rating}</p>
-            <p>Category: {category}</p>
-            {/* Add more details as needed */}
+            <div className="">
+                <div className="flex gap-12 justify-center p-6">
+                    <div className="p-12 bg-[#1313130D] rounded-2xl">
+                        <img src={image} alt="" />
+                    </div>
+
+                    <div>
+                        <div className="mb-3">
+                            <h2 className="text-[#131313] font_playfair font-bold text-4xl mb-4">{bookName}</h2>
+                            <p className="text-[#0d0d0dcc] font_work font-medium">By : {author}</p>
+                        </div>
+                        <hr />
+                        <div className="my-4">
+                            <p className="text-[#0d0d0dcc] font_work font-medium">{category}</p>
+                        </div>
+                        <hr />
+                        <div className="font_work">
+                            <p className="text-[#131313B3] my-4"><span className="text-[#131313] font-bold">Review:</span> {review}</p>
+                            <div className="flex">
+                                <div className="font_work flex items-center gap-3 mb-4 mt-6">
+                                    <div>
+                                        <p className="text-[#131313] font-bold">Tag</p>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <p className="text-[#17BE0A] text-center bg-[#17BE0A0D] font-medium font_work py-2 px-3 rounded-xl h-10">#{tags[0]}</p>
+                                        <p className="text-[#17BE0A] text-center bg-[#17BE0A0D] font-medium font_work py-2 px-3 rounded-xl h-10">#{tags[1]}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div className="my-4 font_work">
+                            <div className="overflow-x-auto">
+                                <table>
+                                    <tbody>
+                                        <tr className="flex gap-6">
+                                            <td className="text-[#131313B3] font-normal">Number of Pages:</td>
+                                            <td className="text-[#131313] font-semibold">{totalPages}</td>
+                                        </tr>
+                                        <tr className="flex gap-6">
+                                            <td className="text-[#131313B3] font-normal">Publisher:</td>
+                                            <td className="text-[#131313] font-semibold">{publisher}</td>
+                                        </tr>
+                                        <tr className="flex gap-6">
+                                            <td className="text-[#131313B3] font-normal">Year of Publishing:</td>
+                                            <td className="text-[#131313] font-semibold">{yearOfPublishing}</td>
+                                        </tr>
+                                        <tr className="flex gap-6">
+                                            <td className="text-[#131313B3] font-normal">Rating:</td>
+                                            <td className="text-[#131313] font-semibold">{rating}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <hr />
+                        <div className="mt-4">
+                            <a className="btn bg-white border border-[#1313134D] text-[#131313] font-medium font_work mr-3">Read</a>
+                            <a className="btn bg-[#59C6D2] text-white font-medium font_work">Wishlist</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

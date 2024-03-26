@@ -1,3 +1,5 @@
+import ListedBooksTab from "./Listed Books Tab/ListedBooksTab";
+
 const ListedBooks = () => {
     return (
         <div className="px-32 pb-12">
@@ -9,8 +11,8 @@ const ListedBooks = () => {
 
             </div>
 
-            <div>
-                
+            <div className="py-14">
+                <ListedBooksTab />
             </div>
         </div>
     );

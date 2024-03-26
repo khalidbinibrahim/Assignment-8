@@ -2,8 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
+import './App.css'
 import ErrorPage from './components/ErrorPage';
 import Root from './components/Root';
+import ListedBooks from './components/LIsted Books/ListedBooks'
+import PagesToRead from './components/Pages to Read/PagesToRead'
+import Home from './components/Home/Home'
 
 const router = createBrowserRouter([
   {
@@ -12,13 +16,18 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/about",
-        element: <h2>This is ABOUT</h2>
+        path: "/",
+        element: <Home />
       },
 
       {
-        path: "/next",
-        element: <h2>This is NEXT</h2>
+        path: "/listed_books",
+        element: <ListedBooks />
+      },
+
+      {
+        path: "/page_to_read",
+        element: <PagesToRead />
       }
     ]
   },

@@ -8,6 +8,7 @@ import Root from './components/Root';
 import ListedBooks from './components/LIsted Books/ListedBooks'
 import PagesToRead from './components/Pages to Read/PagesToRead'
 import Home from './components/Home/Home'
+import BookDetails from './components/Home/Books/BookDetails'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
       {
         path: "/page_to_read",
         element: <PagesToRead />
+      },
+
+      {
+        path: "/book_details/:id",
+        element: <BookDetails />
       }
     ]
   },

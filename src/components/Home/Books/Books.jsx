@@ -6,9 +6,8 @@ const Books = () => {
 
     useEffect(() => {
         fetch('/books.json')
-        .then(res => res.json())
-        .then(data => setBooks(data))
-        .catch(error => console.error('Error fetching books:', error));
+            .then(res => res.json())
+            .then(data => setBooks(data))
     }, []);
 
     return (
@@ -17,7 +16,7 @@ const Books = () => {
                 <h2 className="font_playfair text-center text-[#131313] font-bold text-4xl">Books</h2>
             </div>
 
-            <div className="px-32 pb-12 grid grid-cols-3 gap-6">
+            <div className="px-32 pb-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {
                     books.map(book => <Book key={book.bookId} book={book} />)
                 }

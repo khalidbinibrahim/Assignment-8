@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { saveToLocalStorage } from "../../../utils/localStorage";
+import { toast } from "react-toastify";
 
 const BookDetails = () => {
     const { id } = useParams();
@@ -26,7 +27,29 @@ const BookDetails = () => {
     };
 
     const handleAddToWishlist = () => {
-        saveToLocalStorage(book, 'wishlist');
+        let savedReadData = JSON.parse(localStorage.getItem('read')) || [];
+        let savedWishlistData = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+        const isBookInRead = savedReadData.some(item => item.bookId === book.bookId);
+
+        if (!isBookInRead) {
+            const isBookInWishlist = savedWishlistData.some(item => item.bookId === book.bookId);
+
+            if (!isBookInWishlist) {
+                savedWishlistData.push(book);
+                localStorage.setItem('wishlist', JSON.stringify(savedWishlistData));
+                toast.success('Added successfully to Wishlist Books');
+            } else {
+                toast.error('Already existed in wishlist');
+            }
+        } else {
+            savedReadData = savedReadData.filter(item => item.bookId !== book.bookId);
+            localStorage.setItem('read', JSON.stringify(savedReadData));
+
+            savedReadData.push(book);
+            localStorage.setItem('read', JSON.stringify(savedReadData));
+            toast.success('Added successfully to Read Books');
+        }
     };
 
     return (

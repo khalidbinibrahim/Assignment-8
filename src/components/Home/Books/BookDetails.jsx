@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { saveToLocalStorage } from "../../../utils/localStorage";
 
 const BookDetails = () => {
     const { id } = useParams();
@@ -11,7 +12,7 @@ const BookDetails = () => {
             .then(data => {
                 const singleBook = data.find(book => book.bookId === parseInt(id));
                 setBook(singleBook);
-            })
+            });
     }, [id]);
 
     if (!book) {
@@ -19,6 +20,14 @@ const BookDetails = () => {
     }
 
     const { bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing } = book;
+
+    const handleAddToRead = () => {
+        saveToLocalStorage(book, 'read');
+    };
+
+    const handleAddToWishlist = () => {
+        saveToLocalStorage(book, 'wishlist');
+    };
 
     return (
         <div>
@@ -79,8 +88,8 @@ const BookDetails = () => {
                         </div>
                         <hr />
                         <div className="mt-4">
-                            <a className="btn bg-white border border-[#1313134D] text-[#131313] font-medium font_work mr-3">Read</a>
-                            <a className="btn bg-[#59C6D2] text-white font-medium font_work">Wishlist</a>
+                            <a onClick={handleAddToRead} className="btn bg-white border border-[#1313134D] text-[#131313] font-medium font_work mr-3">Read</a>
+                            <a onClick={handleAddToWishlist} className="btn bg-[#59C6D2] text-white font-medium font_work">Wishlist</a>
                         </div>
                     </div>
                 </div>
